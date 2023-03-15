@@ -1,4 +1,8 @@
-7swinutil.dll: tstring.o
+ifeq ($(OUTPUT),)
+	OUTPUT=7swinutil
+endif
+
+$(OUTPUT).dll: tstring.o
 	arm-mingw32ce-g++ -s -O3 -march=armv5tej -mcpu=arm926ej-s -shared -o $@ $^
 
 tstring.o: tstring.c tstring.h
